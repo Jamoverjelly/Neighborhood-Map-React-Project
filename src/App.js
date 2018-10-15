@@ -9,7 +9,6 @@ class App extends Component {
 
     componentDidMount() {
         this.getPlacesData()
-        this.renderMap()
     }
 
     renderMap = () => {       
@@ -25,7 +24,7 @@ class App extends Component {
         .then(response => {
             this.setState({
                 venues: response.data.response.groups[0].items
-            })
+            }, this.renderMap())
         })
         .catch(error => {
             console.log("There was a problem retrieving data from FourSquare's Places API: " + error);
@@ -35,8 +34,22 @@ class App extends Component {
     initMap = () => {
         const map = new window.google.maps.Map(document.getElementById('map'), {
             center: {lat: 39.946, lng: -75.212},
-            zoom: 14
+            zoom: 15
         });
+
+        // add markers to the map by iterating over the coffee venues stored in the updated state array
+        this.state.venues.map(currentVenue => {
+            let marker = new window.google.maps.Marker({
+                position:
+                    {
+                        lat: currentVenue.venue.location.lat,
+                        lng: currentVenue.venue.location.lng
+                    },
+                map: map,
+                title: currentVenue.venue.name
+            });
+        })
+
     }
 
     render() {
