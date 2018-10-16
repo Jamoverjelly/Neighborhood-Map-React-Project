@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import axios from 'axios';
+
+import InfoWindow from './infoWindow';
 
 class App extends Component {
     state = {
         venues: [],
-        markers: []
+        markers: [],
+        infoWindowIsOpen: false,
+        currentMarker: {},
+        infoContent: ''
     }
 
     componentDidMount() {
@@ -35,13 +39,15 @@ class App extends Component {
     }
 
     initMap = () => {
+        let bindToThis = this;
+
         const map = new window.google.maps.Map(document.getElementById('map'), {
             center: {lat: 39.946, lng: -75.212},
             zoom: 15
         });
 
         // add markers to the map by iterating over the coffee venues stored in the updated state array
-        this.state.venues.map(currentVenue => {
+        this.state.venues.map(currentVenue => {           
             let marker = new window.google.maps.Marker({
                 position:
                     {
@@ -50,25 +56,49 @@ class App extends Component {
                     },
                 map: map,
                 title: currentVenue.venue.name,
-                streetAddress: currentVenue.venue.location.formattedAddress[0],
-                areaAddress: currentVenue.venue.location.formattedAddress[1]
+                address: currentVenue.venue.location.formattedAddress[0] + ', ' + currentVenue.venue.location.formattedAddress[1]
             });
 
             // Add marker into state array
             this.state.markers.push(marker);
+
+            // When marker is clicked, open InfoWindow
+            marker.addListener('click', function () {
+                bindToThis.openInfoWindow(marker);
+            });
         })
 
+        // Listen for clicks on map to close InfoWindow
+        map.addListener('click', function () {
+            bindToThis.closeInfoWindow();
+        });
     }
 
-    collectInfo = (marker) => {
-        let bindToThis = this;
-        let placeName = marker.title;
-        let placeAddress = marker.streetAddress + ' \n' + marker.areaAddress;
+    openInfoWindow = (marker) => {
+        this.setState({
+          infoWindowIsOpen: true,
+          currentMarker: marker
+        });
+    }
+    
+    closeInfoWindow = () => {
+        this.setState({
+            infoWindowIsOpen: false,
+            currentMarker: {}
+        });
     }
 
     render() {
         return (
-            <main>
+            <main className="App">
+                {
+                    this.state.infoWindowIsOpen &&
+                    <InfoWindow
+                        currentMarker={this.state.currentMarker}
+                        infoContent={this.state.infoContent}
+                    />
+                }
+            
                 <div id="map"></div>
             </main>
         )
