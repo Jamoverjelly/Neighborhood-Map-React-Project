@@ -4,7 +4,8 @@ import axios from 'axios';
 
 class App extends Component {
     state = {
-        venues: []
+        venues: [],
+        markers: []
     }
 
     componentDidMount() {
@@ -20,10 +21,12 @@ class App extends Component {
     getPlacesData = () => {
         const fourSquareLink = 'https://api.foursquare.com/v2/venues/explore?client_id=AHI421MPXJ5XNDPQT5JCLNMDCHIOQDC5RVGFL2R3BHQ21314&client_secret=T2MGDFJXLGG1SBGJ0PEL5EIQCSENNQ21R3GX54HP2BXNDZ2R&v=20180323&ll=39.946,-75.212&query=coffee'
         
-        axios.get(fourSquareLink)
+        fetch(fourSquareLink)
+        .then(response => response.json())
         .then(response => {
             this.setState({
-                venues: response.data.response.groups[0].items
+                venues: response.response.groups[0].items
+            // execute call to renderMap after async request completes
             }, this.renderMap())
         })
         .catch(error => {
@@ -46,10 +49,21 @@ class App extends Component {
                         lng: currentVenue.venue.location.lng
                     },
                 map: map,
-                title: currentVenue.venue.name
+                title: currentVenue.venue.name,
+                streetAddress: currentVenue.venue.location.formattedAddress[0],
+                areaAddress: currentVenue.venue.location.formattedAddress[1]
             });
+
+            // Add marker into state array
+            this.state.markers.push(marker);
         })
 
+    }
+
+    collectInfo = (marker) => {
+        let bindToThis = this;
+        let placeName = marker.title;
+        let placeAddress = marker.streetAddress + ' \n' + marker.areaAddress;
     }
 
     render() {
