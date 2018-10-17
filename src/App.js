@@ -9,7 +9,7 @@ class App extends Component {
         markers: [],
         infoWindowIsOpen: false,
         currentMarker: {},
-        infoContent: ''
+        photoContent: ''
     }
 
     componentDidMount() {
@@ -47,7 +47,7 @@ class App extends Component {
         });
 
         // add markers to the map by iterating over the coffee venues stored in the updated state array
-        this.state.venues.map(currentVenue => {           
+        this.state.venues.map(currentVenue => {            
             let marker = new window.google.maps.Marker({
                 position:
                     {
@@ -56,7 +56,8 @@ class App extends Component {
                     },
                 map: map,
                 title: currentVenue.venue.name,
-                address: currentVenue.venue.location.formattedAddress[0] + ', ' + currentVenue.venue.location.formattedAddress[1]
+                address: `${currentVenue.venue.location.formattedAddress[0]},\n${currentVenue.venue.location.formattedAddress[1]}`,
+                id: currentVenue.venue.id
             });
 
             // Add marker into state array
@@ -64,6 +65,7 @@ class App extends Component {
 
             // When marker is clicked, open InfoWindow
             marker.addListener('click', function () {
+                // this.setAnimation(window.google.maps.Animation.BOUNCE);
                 bindToThis.openInfoWindow(marker);
             });
         })
@@ -71,14 +73,27 @@ class App extends Component {
         // Listen for clicks on map to close InfoWindow
         map.addListener('click', function () {
             bindToThis.closeInfoWindow();
+            // if (thisMarker.getAnimation() !== null) {
+            //     thisMarker.setAnimation(null);
+            // }
         });
     }
+
+    // toggleBounce = (marker) => {
+    //     if (marker.getAnimation() !== null) {
+    //         marker.setAnimation(null);
+    //     } else {
+    //         marker.setAnimation(window.google.maps.Animation.BOUNCE);
+    //     }
+    // }
 
     openInfoWindow = (marker) => {
         this.setState({
           infoWindowIsOpen: true,
           currentMarker: marker
         });
+
+        this.collectVenuePhoto(marker);
     }
     
     closeInfoWindow = () => {
@@ -88,6 +103,32 @@ class App extends Component {
         });
     }
 
+    collectVenuePhoto = (marker) => {
+        let bindToThis = this;
+        let photoUrl = `https://api.foursquare.com/v2/venues/${marker.id}/photos?client_id=AHI421MPXJ5XNDPQT5JCLNMDCHIOQDC5RVGFL2R3BHQ21314&client_secret=T2MGDFJXLGG1SBGJ0PEL5EIQCSENNQ21R3GX54HP2BXNDZ2R&v=20180323`
+
+        // fetch photos response object
+        fetch(photoUrl)
+        .then(response => response.json())
+        .then(response => {
+            let photoPrefix = response.response.photos.items[0].prefix;
+            let photoSuffix = response.response.photos.items[0].suffix;
+            let photoSrc = `${photoPrefix}150x150${photoSuffix}`
+            
+            // add photo into state
+            bindToThis.setState({
+                photoContent: photoSrc
+            });
+        })
+        // handle photo retrieval error
+        .catch(error => {
+            let errorReport = 'Failed to parse image data ' + error;
+            bindToThis.setState({
+                photoContent: errorReport
+            });
+        })
+    }
+
     render() {
         return (
             <main className="App">
@@ -95,7 +136,7 @@ class App extends Component {
                     this.state.infoWindowIsOpen &&
                     <InfoWindow
                         currentMarker={this.state.currentMarker}
-                        infoContent={this.state.infoContent}
+                        photoContent={this.state.photoContent}
                     />
                 }
             

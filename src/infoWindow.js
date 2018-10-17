@@ -1,18 +1,22 @@
 import React from 'react';
 
 function InfoWindow(props) {
-    const { currentMarker, infoContent } = props;
+    const { currentMarker, photoContent } = props;
 
     return (
         <aside
             className='info-window'
             tabIndex={0}
         >
-            <p className='attribution'>Provided by FourSquare</p>
             <h2>{currentMarker.title}</h2>
             <article>
-                {infoContent}
+                <img
+                    src={photoContent}
+                    alt={"Most liked photo from " + currentMarker.title}
+                />
+                <p>{currentMarker.address}</p>
             </article>
+            <p className='attribution'>Provided by FourSquare</p>
         </aside>
     );
 }
