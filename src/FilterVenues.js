@@ -20,23 +20,45 @@ class FilterVenues extends Component {
         });
     }
 
+    updateQuery = (query) => {
+        // update the visible navigation based on current query state
+        this.setState({
+            query,
+            navListIsOpen: true
+        });
+
+        // if query state is empty, close display of navigation list
+        if (query === '') {
+            this.setState({
+                navListIsOpen: false
+            });
+        }
+    }
+
+    toggleNavListDisplay = () => {
+        // update display of FilterVenues based on current state of navListIsOpen
+        this.setState((prevState) => ({
+            navListIsOpen: !(prevState.navListIsOpen)
+        }));
+    }
+
     render () {
         return (
-            // Define filter UI within <section> element
-            <section>
-                {/* UI will likely be a controlled component <form> */}
-                <form>
-                    {/* button should toggle navigation list of local cafés */}
-                    <button>
+            <section>                
+                <form>                    
+                    <button
+                        onClick={() => this.toggleNavListDisplay()}
+                    >
                         List Cafés
                     </button>
-                    {/* Required text input for filtering café venues */}
                     <input
                         type='text'
                         placeholder='Filter Café Listing...'
+                        value={query}
+						onChange={(event) => 
+							this.updateQuery(event.target.value)}
                     />                    
                 </form>
-            {/* List of cafés will be rendered on an unordered list */}
             {
                 <ul>
                     {

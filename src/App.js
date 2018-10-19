@@ -69,7 +69,7 @@ class App extends Component {
                     },
                 map: map,
                 title: currentVenue.venue.name,
-                address: `${currentVenue.venue.location.formattedAddress[0]},\n${currentVenue.venue.location.formattedAddress[1]}`,
+                address: `${currentVenue.venue.location.formattedAddress[0]}, ${currentVenue.venue.location.formattedAddress[1]}`,
                 id: currentVenue.venue.id
             });
 
@@ -137,7 +137,6 @@ class App extends Component {
     render() {
         return (
             <main className="App">
-                {/* Create render for FilterVenues component and pass in expected props */}
                 <FilterVenues
                     venuesList={this.state.venues}
                     markers={this.state.markers}
