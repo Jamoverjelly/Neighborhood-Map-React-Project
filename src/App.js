@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import InfoWindow from './infoWindow';
+import FilterVenues from './filterVenues';
 
 class App extends Component {
     constructor(props) {
@@ -97,7 +98,7 @@ class App extends Component {
           currentMarker: marker
         });
 
-        this.collectVenuePhoto(marker);
+        this.getVenuePhoto(marker);
     }
     
     closeInfoWindow = () => {
@@ -107,7 +108,7 @@ class App extends Component {
         });
     }
 
-    collectVenuePhoto = (marker) => {
+    getVenuePhoto = (marker) => {
         let bindToThis = this;
         let photoUrl = `https://api.foursquare.com/v2/venues/${marker.id}/photos?client_id=AHI421MPXJ5XNDPQT5JCLNMDCHIOQDC5RVGFL2R3BHQ21314&client_secret=T2MGDFJXLGG1SBGJ0PEL5EIQCSENNQ21R3GX54HP2BXNDZ2R&v=20180323`
 
@@ -136,6 +137,13 @@ class App extends Component {
     render() {
         return (
             <main className="App">
+                {/* Create render for FilterVenues component and pass in expected props */}
+                <FilterVenues
+                    venuesList={this.state.venues}
+                    markers={this.state.markers}
+                    openInfoWindow={this.openInfoWindow}
+                />
+
                 {
                     this.state.infoWindowIsOpen &&
                     <InfoWindow
