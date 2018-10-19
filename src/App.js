@@ -4,12 +4,15 @@ import './App.css';
 import InfoWindow from './infoWindow';
 
 class App extends Component {
-    state = {
-        venues: [],
-        markers: [],
-        infoWindowIsOpen: false,
-        currentMarker: {},
-        photoContent: ''
+    constructor(props) {
+        super(props);
+        this.state = {
+            venues: [],
+            markers: [],
+            infoWindowIsOpen: false,
+            currentMarker: {},
+            photoContent: ''
+        }
     }
 
     componentDidMount() {
@@ -36,6 +39,15 @@ class App extends Component {
         .catch(error => {
             console.log("There was a problem retrieving data from FourSquare's Places API: " + error);
         })
+
+
+        // // handle photo retrieval error
+        // .catch(error => {
+        //     let errorReport = 'Failed to parse image data ' + error;
+        //     bindToThis.setState({
+        //         photoContent: errorReport
+        //     });
+        // })
     }
 
     initMap = () => {
@@ -78,14 +90,6 @@ class App extends Component {
             // }
         });
     }
-
-    // toggleBounce = (marker) => {
-    //     if (marker.getAnimation() !== null) {
-    //         marker.setAnimation(null);
-    //     } else {
-    //         marker.setAnimation(window.google.maps.Animation.BOUNCE);
-    //     }
-    // }
 
     openInfoWindow = (marker) => {
         this.setState({
@@ -146,6 +150,8 @@ class App extends Component {
     }
 }
 
+export default App;
+
 function runScript(src) {
 	const body = window.document.querySelector('body');
 	const script = window.document.createElement('script');
@@ -156,8 +162,6 @@ function runScript(src) {
     body.insertAdjacentElement('beforeend', script);
     
     script.onerror = () => (
-        document.write('Load error: Google Maps')
+        document.write('Failed to load Google Maps')
     )
 }
-
-export default App;
