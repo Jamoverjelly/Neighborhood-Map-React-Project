@@ -16,7 +16,7 @@ function InfoWindow(props) {
                 />
                 <p>{currentMarker.address}</p>
             </article>
-            <p className='attribution'>Provided by FourSquare</p>
+            <p className='attribution'>Café Data Provided by FourSquare</p>
         </aside>
     );
 }
