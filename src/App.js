@@ -1,98 +1,74 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import InfoWindow from './infoWindow';
+import * as coffeeVenues from './coffeeVenues.json';
 import FilterVenues from './filterVenues';
+import InfoWindow from './infoWindow';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            venues: [],
+            venues: coffeeVenues.default,
             markers: [],
-            infoWindowIsOpen: false,
             currentMarker: {},
+            infoWindowIsOpen: false,
             photoContent: ''
         }
     }
 
     componentDidMount() {
-        this.getPlacesData()
-    }
-
-    renderMap = () => {       
-        runScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDwaRNU7cl3-C_nhE0Qjd1RQhM6c438OyA&libraries=places&callback=initMap")
         // provide global variable reference for initMap
-        window.initMap = this.initMap 
+        window.initMap = this.initMap;
+        runScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDwaRNU7cl3-C_nhE0Qjd1RQhM6c438OyA&callback=initMap");
     }
 
-    getPlacesData = () => {
-        const fourSquareLink = 'https://api.foursquare.com/v2/venues/explore?client_id=AHI421MPXJ5XNDPQT5JCLNMDCHIOQDC5RVGFL2R3BHQ21314&client_secret=T2MGDFJXLGG1SBGJ0PEL5EIQCSENNQ21R3GX54HP2BXNDZ2R&v=20180323&ll=39.946,-75.212&query=coffee'
-        
-        fetch(fourSquareLink)
-        .then(response => response.json())
-        .then(response => {
-            this.setState({
-                venues: response.response.groups[0].items
-            // execute call to renderMap after async request completes
-            }, this.renderMap())
-        })
-        .catch(error => {
-            console.log("There was a problem retrieving data from FourSquare's Places API: " + error);
-        })
-
-
-        // // handle photo retrieval error
-        // .catch(error => {
-        //     let errorReport = 'Failed to parse image data ' + error;
-        //     bindToThis.setState({
-        //         photoContent: errorReport
-        //     });
-        // })
-    }
 
     initMap = () => {
+        // Set up custom object-context for access to this scope
         let bindToThis = this;
+        // Get state variables into scope
+        const { venues, markers } = this.state;
 
-        const map = new window.google.maps.Map(document.getElementById('map'), {
+        // Declare map object
+        let map = new window.google.maps.Map(document.getElementById('map'), {
             center: {lat: 39.946, lng: -75.212},
             zoom: 15
         });
 
-        // add markers to the map by iterating over the coffee venues stored in the updated state array
-        this.state.venues.map(currentVenue => {            
+        // Create a new marker for each venue in the coffeeVenues.json file
+        for (let i = 0; i < venues.length; i++) {
+            // Define the values of the properties
+            let position = venues[i].position;
+            let title = venues[i].title;
+            let id = venues[i].key
+      
+            // Create the marker itself
             let marker = new window.google.maps.Marker({
-                position:
-                    {
-                        lat: currentVenue.venue.location.lat,
-                        lng: currentVenue.venue.location.lng
-                    },
-                map: map,
-                title: currentVenue.venue.name,
-                address: `${currentVenue.venue.location.formattedAddress[0]}, ${currentVenue.venue.location.formattedAddress[1]}`,
-                id: currentVenue.venue.id
+              map: map,
+              position: position,
+              title: title,
+              animation: window.google.maps.Animation.DROP,
+              id: id
             });
 
-            // Add marker into state array
-            this.state.markers.push(marker);
+            // Update markers state with new marker
+            markers.push(marker);
 
             // When marker is clicked, open InfoWindow
             marker.addListener('click', function () {
-                // this.setAnimation(window.google.maps.Animation.BOUNCE);
                 bindToThis.openInfoWindow(marker);
             });
-        })
+        }
 
         // Listen for clicks on map to close InfoWindow
         map.addListener('click', function () {
             bindToThis.closeInfoWindow();
-            // if (thisMarker.getAnimation() !== null) {
-            //     thisMarker.setAnimation(null);
-            // }
         });
     }
 
     openInfoWindow = (marker) => {
+        // Open InfoWindow and set marker data to pass to component
         this.setState({
           infoWindowIsOpen: true,
           currentMarker: marker
@@ -102,6 +78,7 @@ class App extends Component {
     }
     
     closeInfoWindow = () => {
+        // Close InfoWindow and reset currentMarker
         this.setState({
             infoWindowIsOpen: false,
             currentMarker: {}

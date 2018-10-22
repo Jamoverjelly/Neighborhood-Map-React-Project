@@ -43,6 +43,9 @@ class FilterVenues extends Component {
     }
 
     render () {
+
+        const { query } = this.state;
+
         return (
             <section>                
                 <form>                    
