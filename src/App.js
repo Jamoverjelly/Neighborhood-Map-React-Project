@@ -130,7 +130,7 @@ class App extends Component {
             
                 <div id="map"></div>
             </main>
-        )
+        );
     }
 }
 

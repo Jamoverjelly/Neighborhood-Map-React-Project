@@ -98,9 +98,63 @@ class FilterVenues extends Component {
         });
     }
 
+    getSelectedVenueData = (venue) => {
+        // Provide custom object-context variable to access this scope
+        let bindToThis = this;
+
+        // Clear any existing animations from page
+        this.removeMarkerAnimation();
+        // Add brief animation to marker when corresponding list-item is clicked
+        this.addMarkerAnimation(venue);
+        setTimeout(function() {
+            bindToThis.removeMarkerAnimation();
+        }, 1000);
+
+        // Retrieve data for currently selected marker
+        this.getCurrentMarkerData(venue);
+
+        // Open corresponding InfoWindow for this marker
+        // Delay JS event loop before initiating call to openInfoWindow with current marker data
+        setTimeout(function () {
+            bindToThis.props.openInfoWindow(
+                bindToThis.state.currentMarker
+            );
+        }, 0)
+    }
+
+    removeMarkerAnimation = () => {
+        // Clear animation from all markers in filtered markers collection
+        this.state.filteredMarkers.map(marker =>
+            marker.setAnimation(null)
+        );
+    }
+
+    addMarkerAnimation = (venue) => {
+        // When filtered marker id matches venue's key, animate that marker
+        this.state.filteredMarkers.map(marker => {
+            if (marker.id === venue.key) {
+                marker.setAnimation(
+                    window.google.maps.Animation.BOUNCE
+                );
+            }
+        });
+    }
+
+
+    getCurrentMarkerData = (venue) => {
+        // Clicked markers should open InfoWindow with correct data
+        this.state.filteredMarkers.map(marker => {
+            if (marker.id === venue.key) {
+                this.setState({
+                    currentMarker: marker
+                })
+            }
+        });
+    }
+
     render () {
 
-        const { query } = this.state;
+        const { query, filteredVenues, navListIsOpen } = this.state;
 
         return (
             <section>                
@@ -120,15 +174,26 @@ class FilterVenues extends Component {
 							this.updateQuery(event.target.value)}
                     />                    
                 </form>
-            {
-                <ul>
-                    {
-                        <li>
-                            Café Name
-                        </li>
-                    }
-                </ul>
-            }
+
+                {
+                    navListIsOpen &&
+                    <ul>
+                        {
+                            // Create list-item for each venue in filteredVenues collection
+                            filteredVenues.map(venue => (
+                                <li
+                                    tabIndex={0}
+                                    role="button"
+                                    key={venue.key}
+                                    onClick={() => this.getSelectedVenueData(venue)}
+                                    onKeyPress={() => this.getSelectedVenueData(venue)}
+                                >
+                                    {venue.title}
+                                </li>
+                            ))
+                        }
+                    </ul>
+                }
             </section>
         );
     }
