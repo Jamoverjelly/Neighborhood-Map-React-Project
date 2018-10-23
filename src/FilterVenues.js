@@ -171,6 +171,7 @@ class FilterVenues extends Component {
                     <input
                         className='nav-input'
                         type='text'
+                        aria-labelledby='filter'
                         placeholder='Filter Café Listing...'
                         value={query}
 						onChange={(event) => 
