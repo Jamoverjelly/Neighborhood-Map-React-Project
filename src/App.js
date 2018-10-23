@@ -23,7 +23,6 @@ class App extends Component {
         runScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDwaRNU7cl3-C_nhE0Qjd1RQhM6c438OyA&callback=initMap");
     }
 
-
     initMap = () => {
         // Set up custom object-context for access to this scope
         let bindToThis = this;
@@ -38,24 +37,28 @@ class App extends Component {
 
         // Create a new marker for each venue in the coffeeVenues.json file
         for (let i = 0; i < venues.length; i++) {
-            // Define the values of the properties
+            // Define a value for each property
             let position = venues[i].position;
             let title = venues[i].title;
-            let id = venues[i].key
+            let streetAddress = venues[i].streetAddress;
+            let municipalAddress = venues[i].municipalAddress;
+            let id = venues[i].key;
       
-            // Create the marker itself
+            // Create the marker
             let marker = new window.google.maps.Marker({
               map: map,
               position: position,
               title: title,
+              streetAddress: streetAddress,
+              municipalAddress: municipalAddress,
               animation: window.google.maps.Animation.DROP,
               id: id
             });
 
-            // Update markers state with new marker
+            // Update the markers collection state with new marker
             markers.push(marker);
 
-            // When marker is clicked, open InfoWindow
+            // When a marker is clicked, open the InfoWindow
             marker.addListener('click', function () {
                 bindToThis.openInfoWindow(marker);
             });
@@ -68,7 +71,7 @@ class App extends Component {
     }
 
     openInfoWindow = (marker) => {
-        // Open InfoWindow and set marker data to pass to component
+        // Open InfoWindow and set marker data to pass to InfoWindow component
         this.setState({
           infoWindowIsOpen: true,
           currentMarker: marker
@@ -86,10 +89,11 @@ class App extends Component {
     }
 
     getVenuePhoto = (marker) => {
+        // Provide custom object-context variable to access this scope
         let bindToThis = this;
         let photoUrl = `https://api.foursquare.com/v2/venues/${marker.id}/photos?client_id=AHI421MPXJ5XNDPQT5JCLNMDCHIOQDC5RVGFL2R3BHQ21314&client_secret=T2MGDFJXLGG1SBGJ0PEL5EIQCSENNQ21R3GX54HP2BXNDZ2R&v=20180323`
 
-        // fetch photos response object
+        // Fetch photos response object from the FourSquare API using Fetch
         fetch(photoUrl)
         .then(response => response.json())
         .then(response => {
@@ -97,12 +101,12 @@ class App extends Component {
             let photoSuffix = response.response.photos.items[0].suffix;
             let photoSrc = `${photoPrefix}150x150${photoSuffix}`
             
-            // add photo into state
+            // Add the retrieved photo for this venue into the state
             bindToThis.setState({
                 photoContent: photoSrc
             });
         })
-        // handle photo retrieval error
+        // If there's an error with the HTTP request, handle it
         .catch(error => {
             let errorReport = 'Failed to parse image data ' + error;
             bindToThis.setState({

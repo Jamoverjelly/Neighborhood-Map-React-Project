@@ -8,15 +8,20 @@ function InfoWindow(props) {
             className='info-window'
             tabIndex={0}
         >
-            <h2>{currentMarker.title}</h2>
+            <h2 className='info-window-title'>
+                {currentMarker.title}
+            </h2>
             <article>
                 <img
                     src={photoContent}
                     alt={"Most liked photo from " + currentMarker.title}
                 />
-                <p>{currentMarker.address}</p>
+                <div className='info-window-address'>
+                    <p>{currentMarker.streetAddress}</p>
+                    <p>{currentMarker.municipalAddress}</p>
+                </div>
             </article>
-            <p className='attribution'>Café Data Provided by FourSquare</p>
+            <p className='source-attribution'>Café Data Provided by FourSquare</p>
         </aside>
     );
 }

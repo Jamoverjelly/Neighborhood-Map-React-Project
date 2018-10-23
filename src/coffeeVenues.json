@@ -7,7 +7,8 @@
             "lat": 39.9483,
             "lng": -75.2133
         },
-        "address": "4529 Springfield Ave, Philadelphia, PA 19143",
+        "streetAddress": "4529 Springfield Ave, ",
+        "municipalAddress": "Philadelphia, PA 19143",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/110088_ykW90lfUp4SGFU4PbrUJkYGjUAcIVDJnIbY-sg2yHkE.jpg"
     },
     {
@@ -18,7 +19,8 @@
             "lat": 39.9497,
             "lng": 75.2092
         },
-        "address": "4239 Baltimore Ave (at 43rd St), Philadelphia, PA 19104",
+        "streetAddress": "4239 Baltimore Ave (at 43rd St), ",
+        "municipalAddress": "Philadelphia, PA 19104",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/7217477_Kuun7p_goKdS_3Hypl02lTKq99U6-cM_zHsAXFB1a5o.jpg"
     },
     {
@@ -29,7 +31,8 @@
             "lat": 39.9484,
             "lng": -75.2195
         },
-        "address": "4800 Baltimore Ave (at 48th St), Philadelphia, PA 19143",
+        "streetAddress": "4800 Baltimore Ave (at 48th St), ",
+        "municipalAddress": "Philadelphia, PA 19143",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/Gi-aiJkD4HUbWs2yYGos1rouLkF88jPFfkbb06LxbPI.jpg"
     },
     {
@@ -40,7 +43,8 @@
             "lat": 39.9478,
             "lng": -75.2227
         },
-        "address": "701 S 50th St (49th Street), Philadelphia, PA 19143",
+        "streetAddress": "701 S 50th St (49th Street), ",
+        "municipalAddress": "Philadelphia, PA 19143",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/39868917_Zzlof3n2FXUG0mbql7sI35ST9VcFJmMh3gedj3BXSfc.jpg"
     },
     {
@@ -51,7 +55,8 @@
             "lat": 39.9540,
             "lng": -75.2004
         },
-        "address": "3901 Walnut St, Philadelphia, PA 19104",
+        "streetAddress": "3901 Walnut St, ",
+        "municipalAddress": "Philadelphia, PA 19104",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/26340379_A8mHPTorzQmEUUbo_ziU4hf-7tI7YZfbLvOOY7ruuEA.jpg"
     },
     {
@@ -62,7 +67,8 @@
             "lat": 39.9514,
             "lng": -75.2123
         },
-        "address": "Philadelphia, PA, United States",
+        "streetAddress": "Philadelphia, PA, United States",
+        "municipalAddress": null,
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/6785_C6TgLGLGmzTu-nGZa06zGI-JkQpI-X0e8fu6KLaBusc.jpg"
     },
     {
@@ -73,7 +79,8 @@
             "lat": 39.9541,
             "lng": -75.2117
         },
-        "address": "4426 Locust St (at 45th St), Philadelphia, PA 19104",
+        "streetAddress": "4426 Locust St (at 45th St), ",
+        "municipalAddress": "Philadelphia, PA 19104",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/299576_8r3t8t8SGqvUqZjsElEXob0yt890unVPxn7p2kbLBQA.jpg"
     },
     {
@@ -84,7 +91,8 @@
             "lat": 39.9511,
             "lng": -75.1990
         },
-        "address": "3744 Spruce St, Philadelphia, PA 19104",
+        "streetAddress": "3744 Spruce St, ",
+        "municipalAddress": "Philadelphia, PA 19104",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/reotYvCVnX17hyqHqmbs5MClnq3Yy_ar-5x9L0nqarU.jpg"
     },
     {
@@ -95,7 +103,8 @@
             "lat": 39.9547,
             "lng": -75.2024
         },
-        "address": "Philadelphia, PA, United States",
+        "streetAddress": "Philadelphia, PA, United States",
+        "municipalAddress": null,
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/180392298_IxZDk8D_qgdZPHh-PziKZfcf_ZuRiSk5SLAWQPvh4co.jpg"
     },
     {
@@ -106,7 +115,8 @@
             "lat": 39.9525,
             "lng": -75.1997
         },
-        "address": "3800 Locust Walk (at UPenn Class of 1920 Commons Bldg), Philadelphia, PA 19104",
+        "streetAddress": "3800 Locust Walk (at UPenn Class of 1920 Commons Bldg), ",
+        "municipalAddress": "Philadelphia, PA 19104",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/52953275_L8zW6CzINOWMCEs9joMUzLpaQXm3OygsbbL4bY2FGuM.jpg"
     },
     {
@@ -117,7 +127,8 @@
             "lat": 39.9543,
             "lng": -75.2035
         },
-        "address": "4013 Walnut St (at 40th St), Philadelphia, PA 19104",
+        "streetAddress": "4013 Walnut St (at 40th St), ",
+        "municipalAddress": "Philadelphia, PA 19104",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/509228_hO9g-wUaywFdIN0jjGqnz6cTVaavz5A28v6Pq4RUY4E.jpg"
     },
     {
@@ -128,7 +139,8 @@
             "lat": 39.9553,
             "lng": -75.2122
         },
-        "address": "4508 Walnut St (45th St), Philadelphia, PA 19139",
+        "streetAddress": "4508 Walnut St (45th St), ",
+        "municipalAddress": "Philadelphia, PA 19139",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/445882615_Np8Q-_hS3SL_7XWd5HlWhjO45CT87TMCvfFq5FI2QV4.jpg"
     },
     {
@@ -139,7 +151,8 @@
             "lat": 39.9468,
             "lng": -75.2069
         },
-        "address": "600 S 43rd St (at Woodland Ave), Philadelphia, PA 19104",
+        "streetAddress": "600 S 43rd St (at Woodland Ave), ",
+        "municipalAddress": "Philadelphia, PA 19104",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/1984691_MGsAZdrjIN8NSxPogjdqs_X78VHVfeSKds9HJW9UYaA.jpg"
     },
     {
@@ -150,7 +163,8 @@
             "lat": 39.9484,
             "lng": -75.2063
         },
-        "address": "Philadelphia, PA, United States",
+        "streetAddress": "Philadelphia, PA, United States",
+        "municipalAddress": null,
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/445882615_tCBUssorJAs1FDyMYRk_p5smgfIBQRTupCLl9duo1tY.jpg"
     },
     {
@@ -161,7 +175,8 @@
             "lat": 39.9442,
             "lng": -75.2102
         },
-        "address": "4615 Woodland Ave (46th and woodland), Philadelphia, PA 19143"
+        "streetAddress": "4615 Woodland Ave (46th and woodland), ",
+        "municipalAddress": "Philadelphia, PA 19143"
     },
     {
         "key": "4cb716aa86e09eb0c9ac62e2",
@@ -171,7 +186,8 @@
             "lat": 39.9435,
             "lng": -75.2102
         },
-        "address": "30th & Market St Station, Philadelphia, PA 19104",
+        "streetAddress": "30th & Market St Station, ",
+        "municipalAddress": "Philadelphia, PA 19104",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/18351284_7qtVQoZMXjjn1bwSJF9Gny9MgBUpbA125ffIX2wKVR8.jpg"
     },
     {
@@ -182,7 +198,8 @@
             "lat": 39.9557,
             "lng": -75.2142
         },
-        "address": "4601 Walnut St (46th St), Philadelphia, PA 19139",
+        "streetAddress": "4601 Walnut St (46th St), ",
+        "municipalAddress": "Philadelphia, PA 19139",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/62616767_ptjWYqCV9vUhd_F2gH-8IMSi6NtAX-GOXgpgaRRuAAE.jpg"
     },
     {
@@ -193,7 +210,8 @@
             "lat": 39.9524,
             "lng": -75.2166
         },
-        "address": "4705 Pine St (47th and Pine), Philadelphia, PA 19143",
+        "streetAddress": "4705 Pine St (47th and Pine), ",
+        "municipalAddress": "Philadelphia, PA 19143",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/6785_PcGBa_UoCa7kz3kyQRgDPjyvznKBbp87XJUYnpBr8mM.jpg"
     },
     {
@@ -204,7 +222,8 @@
             "lat": 39.9549,
             "lng": -75.2118
         },
-        "address": "208 S 45th St (Walnut Street), Philadelphia, PA 19104",
+        "streetAddress": "208 S 45th St (Walnut Street), ",
+        "municipalAddress": "Philadelphia, PA 19104",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/94411_L1VpDd58lhOdqWlC1Z0mwgLBCAa5MoicAg7YvcPo9Zw.jpg"
     },
     {
@@ -215,7 +234,8 @@
             "lat": 39.9507,
             "lng": -75.2009
         },
-        "address": "Ryan Vet Hospital (2nd floor), Philadelphia, PA",
+        "streetAddress": "Ryan Vet Hospital (2nd floor), ",
+        "municipalAddress": "Philadelphia, PA 19104",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/10XKGDQ4UNZULKMQETKNUDOOS3AWPHIJOCGNZPCAHGYO03C2.jpg"
     },
     {
@@ -226,7 +246,8 @@
             "lat": 39.9519,
             "lng": -75.2010
         },
-        "address": "in Harrison College House (3910 Irving St), Philadelphia, PA 19104"
+        "streetAddress": "in Harrison College House (3910 Irving St), ",
+        "municipalAddress": "Philadelphia, PA 19104"
     },
     {
         "key": "4c276470c11dc9b63e762a24",
@@ -236,7 +257,8 @@
             "lat": 39.9566,
             "lng": -75.2091
         },
-        "address": "4325 Chestnut St, Philadelphia, PA 19104",
+        "streetAddress": "4325 Chestnut St, ",
+        "municipalAddress": "Philadelphia, PA 19104",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/YTFU3BHUZ2TFIXFFOLM03HY0STT2HSNA5P40I0ZTQNBQCNGX.jpg"
     },
     {
@@ -247,7 +269,8 @@
             "lat": 39.9527,
             "lng": -75.2030
         },
-        "address": "4000 Locust St (at 40th St), Philadelphia, PA 19104",
+        "streetAddress": "4000 Locust St (at 40th St), ",
+        "municipalAddress": "Philadelphia, PA 19104",
         "imgSrc": "https://igx.4sqi.net/img/general/150x150/IcIejDaYpTOlwPagKX37nLYdYPg10Re15Q_pLYXIk30.jpg"
     }
 ]

@@ -23,7 +23,7 @@ class FilterVenues extends Component {
     }
 
     updateQuery = (query) => {
-        // Update the visible navigation based on current query state
+        // Update the navigation visibility based on current query state
         this.setState({
             query,
             navListIsOpen: true
@@ -35,6 +35,7 @@ class FilterVenues extends Component {
                 navListIsOpen: false
             });
         }
+        this.controlDisplayedVenues(query);
     }
 
     toggleNavListDisplay = () => {
@@ -140,7 +141,6 @@ class FilterVenues extends Component {
         });
     }
 
-
     getCurrentMarkerData = (venue) => {
         // Clicked markers should open InfoWindow with correct data
         this.state.filteredMarkers.map(marker => {
@@ -157,16 +157,19 @@ class FilterVenues extends Component {
         const { query, filteredVenues, navListIsOpen } = this.state;
 
         return (
-            <section>                
+            <section className='nav-container'>                
                 <form
+                    className='nav-form'
                     onSubmit={(event) => event.preventDefault()}
                 >                    
                     <button
+                        className='nav-button'
                         onClick={() => this.toggleNavListDisplay()}
                     >
                         List
                     </button>
                     <input
+                        className='nav-input'
                         type='text'
                         placeholder='Filter Café Listing...'
                         value={query}
@@ -177,13 +180,14 @@ class FilterVenues extends Component {
 
                 {
                     navListIsOpen &&
-                    <ul>
+                    <ul className='venues-list'>
                         {
                             // Create list-item for each venue in filteredVenues collection
                             filteredVenues.map(venue => (
                                 <li
                                     tabIndex={0}
-                                    role="button"
+                                    className='venue-list-item'
+                                    role='button'
                                     key={venue.key}
                                     onClick={() => this.getSelectedVenueData(venue)}
                                     onKeyPress={() => this.getSelectedVenueData(venue)}
