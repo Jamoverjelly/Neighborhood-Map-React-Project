@@ -7,7 +7,7 @@ The final project for Udacity's Front End Nanodegree challenged me to leverage a
 
 ### A Note On My Development Process
 
-With the exception of using Create React App to bootstrap the project, the neighborhood map application was built entirely from scratch.  My abilities in analyzing code, referencing notes and common developer resources, and transferring this knowledge to actively experiment with and then test the application's required functionality step-by-step were stretched to new levels.
+With the exception of using Create React App to bootstrap the project, the neighborhood map application was built entirely from scratch.  My abilities in analyzing code, referencing notes and relevant documentation, and transferring this knowledge to actively experiment with and then test the application's required functionality step-by-step were stretched to new levels.
 
 
 ## Running The Project
