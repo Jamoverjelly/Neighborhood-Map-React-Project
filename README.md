@@ -53,6 +53,7 @@ Alternatively, the user can also interact with the map and access details for ea
 
 - This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
+<hr>
 
 ### Possible Improvements to Consider
 
