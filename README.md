@@ -18,11 +18,6 @@ With the exception of using Create React App to bootstrap the project, the neigh
 4. In your browser, navigate to http://localhost:3000 to view a running instance of the application
 
 
-### Viewing a Live Demo of the Project
-
-[The West Philly Coffee Caper](http://jamoverjelly.github.io/Neighborhood-Map-React-Project/)
-
-
 ## Navigating the Application
 
 In the upper-right portion of the map, the user can either choose to navigate through the provided local café locations by clicking on the 'List' button to display an interactive list navigation or entering a search query to filter through the list of available café locations and their corresponding markers on the map.  Selecting a café from the list navigation, highlights that location on the map by causing the marker to animate as well as opening an info window providing additional details for the selected café in the lower-right portion of the map.
