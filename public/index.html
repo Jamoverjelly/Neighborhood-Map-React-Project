@@ -39,6 +39,13 @@
     To begin the development, run `npm start` or `yarn start`.
     To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+  <script>
+    gm_authFailure = () => {
+      alert('There was a critical authentication error when attempting to run the Google Maps API. ' +
+        'The backend API key must be verified for the app to function properly.');
+    }
+  </script>
 </body>
 
 </html>

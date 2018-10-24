@@ -165,12 +165,15 @@ class FilterVenues extends Component {
                     <button
                         className='nav-button'
                         onClick={() => this.toggleNavListDisplay()}
+                        aria-haspopup='true'
+                        aria-controls='venues-list'
                     >
                         List
                     </button>
                     <input
                         className='nav-input'
                         type='text'
+                        role='searchbox'
                         aria-labelledby='filter'
                         placeholder='Filter Café Listing...'
                         value={query}
@@ -181,14 +184,19 @@ class FilterVenues extends Component {
 
                 {
                     navListIsOpen &&
-                    <ul className='venues-list'>
+                    <ul
+                        className='venues-list'
+                        role='menu'
+                        aria-labelledby='menubutton'
+                    >
                         {
                             // Create list-item for each venue in filteredVenues collection
                             filteredVenues.map(venue => (
                                 <li
-                                    tabIndex={0}
                                     className='venue-list-item'
-                                    role='button'
+                                    tabIndex={0}
+                                    role='menuitem'
+                                    aria-labelledby={venue.title}
                                     key={venue.key}
                                     onClick={() => this.getSelectedVenueData(venue)}
                                     onKeyPress={() => this.getSelectedVenueData(venue)}

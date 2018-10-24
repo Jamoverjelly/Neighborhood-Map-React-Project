@@ -22,7 +22,7 @@ class App extends Component {
         window.initMap = this.initMap;
         runScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDwaRNU7cl3-C_nhE0Qjd1RQhM6c438OyA&callback=initMap");
     }
-
+    
     initMap = () => {
         // Set up custom object-context for access to this scope
         let bindToThis = this;
@@ -132,7 +132,7 @@ class App extends Component {
                     />
                 }
             
-                <div id="map"></div>
+                <div id="map" role="application"></div>
             </main>
         );
     }
@@ -151,5 +151,5 @@ function runScript(src) {
     
     script.onerror = () => (
         document.write('Failed to load Google Maps')
-    )
+    );
 }

@@ -17,6 +17,20 @@ With the exception of using Create React App to bootstrap the project, the neigh
 3. Run the development server with `npm start`
 4. In your browser, navigate to http://localhost:3000 to view a running instance of the application
 
+> #### ⚠️  **Note:** Running the Application with the Service Worker in Production Mode
+> 
+> The Neighborhood Map application uses a service worker to cache responses to HTTP requests for site assests.  This permits the application to load during low-connectivity scenarios.
+> 
+> Because this project is bootstrapped with Create React App, in order for the service worker to work as intended, the app must be launched in production mode.  The above instructions are intended for running the application *in development mode only*.
+> 
+> To run the project in production mode and thereby enable the service worker capability, follow steps one and two from above as normal, and then launch the application as a production instance by doing the following:
+> 
+> 3. Start the application in production with `npm run build`
+> 4. Establish a production server instance with `serve -s build`
+> 5. In your browser, navigate to http://localhost:5000 to view a running production instance of the application
+> 
+> The application's service worker should now be running and caching page content for low-connectivity and offline access.
+
 
 ## Navigating the Application
 
