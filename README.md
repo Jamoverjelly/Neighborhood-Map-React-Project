@@ -23,7 +23,7 @@ With the exception of using Create React App to bootstrap the project, the neigh
 > 
 > Because this project is bootstrapped with Create React App, in order for the service worker to work as intended, the app must be launched in production mode.  The above instructions are intended for running the application *in development mode only*.
 > 
-> To run the project in production mode and thereby enable the service worker capability, follow steps one and two from above as normal, and then launch the application as a production instance by doing the following:
+> To run the project in production mode and thereby enable the service worker's capabilities, follow steps one and two from above as normal. Then launch the application as a production instance by doing the following:
 > 
 > 3. Start the application in production with `npm run build`
 > 4. Establish a production server instance with `serve -s build`
