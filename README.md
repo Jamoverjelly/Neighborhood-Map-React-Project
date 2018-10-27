@@ -38,6 +38,8 @@ In the upper-right portion of the map, the user can either choose to navigate th
 
 Alternatively, the user can also interact with the map and access details for each café by clicking each of the available markers.
 
+![A screen-shot of my app showing all the local coffee shops in my neighborhood as well as the info window for ReAnimator Coffee](./App-overview.png)
+
 
 ## Resources
 
